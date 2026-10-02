@@ -41,5 +41,10 @@ public class BattleStats : MonoBehaviour
             player.overworld.SetActive(true);
             player.battleSystem.SetActive(false);
         }
+        if (player.playerHealth <= 0)
+        {
+            player.battleSystem.SetActive(false);
+            player.gameOverScreen.SetActive(true);
+        }
     }
 }
