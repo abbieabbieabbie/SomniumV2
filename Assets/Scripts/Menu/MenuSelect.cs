@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MenuSelect : MonoBehaviour
 {
-    private int selected;
+    private float selected;
+    public PlayerCollider player;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,23 @@ public class MenuSelect : MonoBehaviour
         {
             selected = -4;
         }
-        transform.position = new Vector3(-2.2f,(2 + selected), 0f);
+        transform.position = new Vector3(-3.0f,(2.0f + selected), -5f) + transform.parent.position;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            switch(selected)
+            {
+                case 0:
+                    player.overworld.SetActive(true);
+                    transform.parent.gameObject.SetActive(false);
+                    break;
+                case -4:
+                    Application.Quit();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     
 }

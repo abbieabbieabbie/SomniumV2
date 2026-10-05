@@ -14,7 +14,7 @@ public class EnemyGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InstantiateEnemy(0, new Vector3(0,0,5));
+        InstantiateEnemy(0, new Vector3(0,0.3f,5));
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class EnemyGeneration : MonoBehaviour
         if (respawnTime <= 0)
         {
             InstantiateEnemy(0, new Vector3(Random.Range(-19f,19f),0,Random.Range(-19f,19f)));
-            respawnTime += Random.Range(30f,60f);
+            respawnTime += Random.Range(20f,35f);
         } else
         {
             respawnTime -= Time.deltaTime;
