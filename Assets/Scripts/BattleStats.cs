@@ -8,8 +8,10 @@ public class BattleStats : MonoBehaviour
     public string enemyName;
     public float enemyHealth;
     public PlayerCollider player;
+    public PlayerMovement playerPos;
     public TMPro.TextMeshProUGUI healthText;
     public GameObject enemyObject;
+    public EnemyGeneration enemyPrefabs;
     // Start is called before the first frame update
     public void SetupBattle(GameObject enemy)
     {
@@ -43,8 +45,10 @@ public class BattleStats : MonoBehaviour
         }
         if (player.playerHealth <= 0)
         {
+            Destroy(enemyObject);
             player.battleSystem.SetActive(false);
             player.gameOverScreen.SetActive(true);
+            enemyPrefabs.GameOver();
         }
     }
 }

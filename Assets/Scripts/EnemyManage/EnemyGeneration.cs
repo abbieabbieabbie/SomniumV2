@@ -52,4 +52,8 @@ public class EnemyGeneration : MonoBehaviour
         }
         
     }
+    public void GameOver()
+    {
+        Destroy(gameObject);
+    }
 }
