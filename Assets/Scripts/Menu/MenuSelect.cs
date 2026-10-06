@@ -6,6 +6,7 @@ public class MenuSelect : MonoBehaviour
 {
     private float selected;
     public PlayerCollider player;
+    public BattleStats battleStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,9 @@ public class MenuSelect : MonoBehaviour
             {
                 case 0:
                     player.overworld.SetActive(true);
+                    player.playerHealth = 50f;
                     transform.parent.gameObject.SetActive(false);
+                    
                     break;
                 case -4:
                     Application.Quit();
