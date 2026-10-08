@@ -53,12 +53,14 @@ public class BattleStats : MonoBehaviour
         {
             Destroy(enemyObject);
             player.overworld.SetActive(true);
+            player.filter.SetActive(true);
             player.battleSystem.SetActive(false);
         }
         if (player.playerHealth <= 0)
         {
             Destroy(enemyObject);
             player.battleSystem.SetActive(false);
+            player.filter.SetActive(true);
             player.gameOverScreen.SetActive(true);
             enemyPrefabs.GameOver();
         }

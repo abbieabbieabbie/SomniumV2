@@ -81,16 +81,16 @@ public class BattleSelect : MonoBehaviour
         if (battleMenu == 0) { // If you are not selecting anything
             if (HorSelect == 0 && VerSelect == 0)
             {
-                MoveToPosition(-7.8f,3.1f);
+                MoveToPosition(-6.6f,3.1f);
             } else if (HorSelect == 1 && VerSelect == 0)
             {
-                MoveToPosition(-4.7f,3.1f);
+                MoveToPosition(-4.0f,3.1f);
             } else if (HorSelect == 0 && VerSelect == 1)
             {
-                MoveToPosition(-7.8f,2.3f);
+                MoveToPosition(-6.6f,2.3f);
             } else if (HorSelect == 1 && VerSelect == 1)
             {
-                MoveToPosition(-4.7f,2.3f);
+                MoveToPosition(-4.0f,2.3f);
             }
         }
     }
@@ -102,7 +102,10 @@ public class BattleSelect : MonoBehaviour
         {
             if (previousMenu == 1)
             {
-                attackScript.Attack(battleStats.enemyIdentification + 1, player.damage);
+                if (!attackScript.inDialog)
+                {
+                    attackScript.Attack(battleStats.enemyIdentification + 1, player.damage);
+                }
             } else
             {
                 for (int i = 0; i < disableList.Count; i++)
@@ -145,16 +148,16 @@ public class BattleSelect : MonoBehaviour
             switch(menuOverride)
             {
                 case 1:
-                    MoveToPosition(-7.8f,3.1f);
+                    MoveToPosition(-6.6f,3.1f);
                     break;
                 case 2:
-                    MoveToPosition(-4.7f,3.1f);
+                    MoveToPosition(-4.0f,3.1f);
                     break;
                 case 3:
-                    MoveToPosition(-7.8f,2.3f);
+                    MoveToPosition(-6.6f,2.3f);
                     break;
                 default:
-                    MoveToPosition(-4.7f,2.3f);
+                    MoveToPosition(-4.0f,2.3f);
                     break;
             }
         } else
@@ -162,16 +165,16 @@ public class BattleSelect : MonoBehaviour
             switch(battleMenu)
             {
                 case 1:
-                    MoveToPosition(-7.8f,3.1f);
+                    MoveToPosition(-6.6f,3.1f);
                     break;
                 case 2:
-                    MoveToPosition(-4.7f,3.1f);
+                    MoveToPosition(-4.0f,3.1f);
                     break;
                 case 3:
-                    MoveToPosition(-7.8f,2.3f);
+                    MoveToPosition(-6.6f,2.3f);
                     break;
                 default:
-                    MoveToPosition(-4.7f,2.3f);
+                    MoveToPosition(-4.0f,2.3f);
                     break;
             }
         }

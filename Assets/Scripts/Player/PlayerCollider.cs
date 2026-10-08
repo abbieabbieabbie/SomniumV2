@@ -8,6 +8,7 @@ public class PlayerCollider : MonoBehaviour
     public GameObject overworld;
     public GameObject gameOverScreen;
     public BattleStats battleSetup;
+    public GameObject filter;
     public float playerHealth = 50;
     public float maxPlayerHealth = 50;
     public float damage = 5;
@@ -17,6 +18,7 @@ public class PlayerCollider : MonoBehaviour
         {
             battleSetup.SetupBattle(other.gameObject);
             overworld.SetActive(false);
+            filter.SetActive(false);
             battleSystem.SetActive(true);
         }
     }

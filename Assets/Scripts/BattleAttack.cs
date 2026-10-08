@@ -80,87 +80,85 @@ public class BattleAttack : MonoBehaviour
     IEnumerator Dialog(string dialog, int startPos, int endDialog)
     {
         TMPro.TextMeshProUGUI dialogue = dialogText.GetComponent<TMPro.TextMeshProUGUI>();
-
-        for (int i = startPos; i < dialog.Length; i++)
-        {
             dialogue.text = dialog;
             while (skipLine == false)
             {
                 yield return null;
             }
+
+            if (endDialog == 1)
+            {
+                if (battleStats.enemyHealth <= 0)
+                {
+                    StartDialog("The " + battleStats.enemyName + " was defeated!", 0, 2);
+                }
+                else
+                {
+                    battle.EscapeToSelect(1);
+                    battleStats.WinCondition();
+                }
+            }
+            if (endDialog == 2)
+                {
+                    battle.EscapeToSelect(1);
+                    battleStats.WinCondition();
+                }
+
             if (endDialog == -1)
             {
                 randomNumber = Random.Range(0,4);
-                if (battleStats.enemyHealth > 0)
+                switch(randomNumber)
                 {
-                    switch(randomNumber)
-                    {
-                        case 1:
-                            StartDialog(dialogTextlist[1], 0, 1);
-                            break;
-                        case 2:
-                            StartDialog(dialogTextlist[2], 0, 1);
-                            battleStats.player.playerHealth -= 5;
-                            battleStats.UpdateHealth();
-                            break;
-                        case 3:
-                            StartDialog(dialogTextlist[3], 0, 1);
-                            battleStats.player.playerHealth -= 5;
-                            battleStats.UpdateHealth();
-                            break;
-                        default:
-                            StartDialog(dialogTextlist[1], 0, 1);
-                            break;
-                    }
-                    break;
-                } else if (endDialog == -1)
-                {
-                    randomNumber = Random.Range(0, 7);
-                    if (battleStats.enemyHealth > 0)
-                    {
-                        switch(randomNumber)
-                        {
-                            case 1:
-                                StartDialog(dialogTextlist[4], 0, 1);
-                                break;
-                            case 2:
-                                StartDialog(dialogTextlist[5], 0, 1);
-                                battleStats.player.playerHealth -= Random.Range(5,11);
-                                battleStats.UpdateHealth();
-                                break;
-                            case 3:
-                                StartDialog(dialogTextlist[6], 0, 1);
-                                battleStats.player.playerHealth -= Random.Range(9,14);
-                                battleStats.UpdateHealth();
-                                break;
-                            case 4:
-                                StartDialog(dialogTextlist[7], 0, 1);
-                                break;
-                            case 5:
-                                StartDialog(dialogTextlist[8], 0, 1);
-                                break;
-                            case 6:
-                                StartDialog(dialogTextlist[9], 0, 1);
-                                break;
-                            default:
-                                StartDialog(dialogTextlist[1], 0, 1);
-                                break;
-                        }
-                    break;
-                    }
+                    case 1:
+                        StartDialog(dialogTextlist[1], 0, 1);
+                        break;
+                    case 2:
+                        StartDialog(dialogTextlist[2], 0, 1);
+                        battleStats.player.playerHealth -= 5;
+                        battleStats.UpdateHealth();
+                        break;
+                    case 3:
+                        StartDialog(dialogTextlist[3], 0, 1);
+                        battleStats.player.playerHealth -= 5;
+                        battleStats.UpdateHealth();
+                        break;
+                    default:
+                        StartDialog(dialogTextlist[1], 0, 1);
+                        break;
                 }
-                if (battleStats.enemyHealth <= 0)
-                {
-                    Debug.Log("The enemy was defeated!");
-                    StartDialog("The " + battleStats.enemyName + " was defeated!", 0, 1);
-                }
-                
-            } else if (endDialog == 1)
+            } 
+
+            if (endDialog == -2)
             {
-                battle.EscapeToSelect(1);
-                battleStats.WinCondition();
+                randomNumber = Random.Range(1, 7);
+                switch(randomNumber)
+                {
+                    case 1:
+                        StartDialog(dialogTextlist[4], 0, 1);
+                        break;
+                    case 2:
+                        StartDialog(dialogTextlist[5], 0, 1);
+                        battleStats.player.playerHealth -= Random.Range(5,11);
+                        battleStats.UpdateHealth();
+                        break;
+                    case 3:
+                        StartDialog(dialogTextlist[6], 0, 1);
+                        battleStats.player.playerHealth -= Random.Range(9,14);
+                        battleStats.UpdateHealth();
+                        break;
+                    case 4:
+                        StartDialog(dialogTextlist[7], 0, 1);
+                        break;
+                    case 5:
+                        StartDialog(dialogTextlist[8], 0, 1);
+                        break;
+                    case 6:
+                        StartDialog(dialogTextlist[9], 0, 1);
+                        break;
+                    default:
+                        StartDialog(dialogTextlist[1], 0, 1);
+                        break;
+                }
             }
-            
         }
     }
-}
