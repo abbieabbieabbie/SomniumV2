@@ -51,8 +51,9 @@ public class BattleAttack : MonoBehaviour
     }
     public void Attack(int enemyID, float damageDealt)
     {
+        damageDealt = damageDealt * Random.Range(0.8f,1.2f);
         skipLine = false;
-        StartDialog(dialogTextlist[0] + "Spider for " + damageDealt.ToString() + " damage!", 0, -(enemyID));
+        StartDialog(dialogTextlist[0] + $"{battleStats.enemyName}" + " for " + ((int)(damageDealt)).ToString() + " damage!", 0, -(enemyID));
         battleStats.enemyHealth -= damageDealt;
     }
 
@@ -112,6 +113,41 @@ public class BattleAttack : MonoBehaviour
                             break;
                     }
                     break;
+                } else if (endDialog == -1)
+                {
+                    randomNumber = Random.Range(0, 7);
+                    if (battleStats.enemyHealth > 0)
+                    {
+                        switch(randomNumber)
+                        {
+                            case 1:
+                                StartDialog(dialogTextlist[4], 0, 1);
+                                break;
+                            case 2:
+                                StartDialog(dialogTextlist[5], 0, 1);
+                                battleStats.player.playerHealth -= Random.Range(5,11);
+                                battleStats.UpdateHealth();
+                                break;
+                            case 3:
+                                StartDialog(dialogTextlist[6], 0, 1);
+                                battleStats.player.playerHealth -= Random.Range(9,14);
+                                battleStats.UpdateHealth();
+                                break;
+                            case 4:
+                                StartDialog(dialogTextlist[7], 0, 1);
+                                break;
+                            case 5:
+                                StartDialog(dialogTextlist[8], 0, 1);
+                                break;
+                            case 6:
+                                StartDialog(dialogTextlist[9], 0, 1);
+                                break;
+                            default:
+                                StartDialog(dialogTextlist[1], 0, 1);
+                                break;
+                        }
+                    break;
+                    }
                 }
                 if (battleStats.enemyHealth <= 0)
                 {

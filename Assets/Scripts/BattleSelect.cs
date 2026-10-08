@@ -14,6 +14,7 @@ public class BattleSelect : MonoBehaviour
     public List<GameObject> specialList;
     public BattleAttack attackScript;
     public PlayerCollider player;
+    public BattleStats battleStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,7 +102,7 @@ public class BattleSelect : MonoBehaviour
         {
             if (previousMenu == 1)
             {
-                attackScript.Attack(1, player.damage);
+                attackScript.Attack(battleStats.enemyIdentification + 1, player.damage);
             } else
             {
                 for (int i = 0; i < disableList.Count; i++)

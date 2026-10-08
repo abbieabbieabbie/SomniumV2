@@ -14,6 +14,7 @@ public class MenuSelect : MonoBehaviour
     public List<float> prices;
     public TMPro.TextMeshProUGUI costText;
     public GameObject shopBox;
+    public Transform playerTransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,7 @@ public class MenuSelect : MonoBehaviour
             if (selected < -9)
             {
                 selected = 0;
+                UpdatePrice();
             }
             if (selected > 0)
             {
@@ -74,8 +76,9 @@ public class MenuSelect : MonoBehaviour
                     if (menu == 0)
                     {
                         player.overworld.SetActive(true);
-                        player.playerHealth = 50f;
+                        player.playerHealth = player.maxPlayerHealth;
                         transform.parent.gameObject.SetActive(false);
+                        playerTransform.position = new Vector3(0,0.6f,-5);
                     }
                     break;
                 case -1:
@@ -100,7 +103,10 @@ public class MenuSelect : MonoBehaviour
                     }
                     break;
                 case -4:
-                    Application.Quit();
+                    if (menu == 0)
+                    {
+                        Application.Quit();
+                    }
                     break;
                 case -7:
                     if (menu == 1)
@@ -108,6 +114,7 @@ public class MenuSelect : MonoBehaviour
                         if (coins >= prices[0])
                         {
                             player.maxPlayerHealth += 25;
+                            prices[1] += 1;
                         }
                     }
                     break;
@@ -117,6 +124,7 @@ public class MenuSelect : MonoBehaviour
                         if (coins >= prices[2])
                         {
                             player.damage += 3;
+                            prices[3] += 1;
                         }
                     }
                     break;
@@ -150,10 +158,12 @@ public class MenuSelect : MonoBehaviour
             case -5:
             case -6:
                 costText.text = "Cost: " + $"{prices[(int)((Math.Abs(selected) + 4))]}";
-                Debug.Log((int)((Math.Abs(selected) + 4)));
                 break;
             case -7:
                 costText.text = "Cost: " + $"{Math.Floor(prices[0])}";
+                break;
+            case -9:
+                costText.text = " ";
                 break;
             default:
                 break;

@@ -10,11 +10,12 @@ public class EnemyGeneration : MonoBehaviour
     public GameObject player;
     [SerializeField]
     private float respawnTime;
+    private int enemyCounter;
     int attempt = 1;
     // Start is called before the first frame update
     void Start()
     {
-        InstantiateEnemy(0, new Vector3(0,0.3f,5));
+        InstantiateEnemy(1, new Vector3(0,0.3f,5));
     }
 
     // Update is called once per frame
@@ -22,11 +23,22 @@ public class EnemyGeneration : MonoBehaviour
     {
         if (respawnTime <= 0)
         {
-            InstantiateEnemy(0, new Vector3(Random.Range(-19f,19f),0,Random.Range(-19f,19f)));
+            InstantiateEnemy(1, new Vector3(Random.Range(-19f,19f),0,Random.Range(-19f,19f)));
+            if (Random.Range(0,2) == 0)
+            {
+                InstantiateEnemy(0, new Vector3(Random.Range(-30f,-56f),0,Random.Range(-50f,-53f)));
+            } else
+            {
+                InstantiateEnemy(0, new Vector3(Random.Range(-38f,-59f),0,Random.Range(-69f,-78f)));
+            }
+            
             respawnTime += Random.Range(20f,35f);
         } else
         {
-            respawnTime -= Time.deltaTime;
+            if (enemyCounter <= 50)
+            {
+                respawnTime -= Time.deltaTime;
+            }
         }
     }
 
@@ -47,6 +59,8 @@ public class EnemyGeneration : MonoBehaviour
         } else
         {
             GameObject clone = Instantiate(enemy, parent);
+            enemyCounter += 1;
+            clone.GetComponent<SpriteRenderer>().sprite = SpriteList[type];
             clone.transform.position = spawnPosition;
             clone.name = (string)SpriteList[type].name;
         }

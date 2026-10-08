@@ -10,9 +10,13 @@ public class BattleStats : MonoBehaviour
     public PlayerCollider player;
     public PlayerMovement playerPos;
     public TMPro.TextMeshProUGUI healthText;
+    public TMPro.TextMeshProUGUI enemyNameText;
     public GameObject enemyObject;
     public EnemyGeneration enemyPrefabs;
+    public GameObject enemyVisual;
+    public List<Sprite> visualList;
     public int specialWeapon = 0;
+    public int enemyIdentification;
     // Start is called before the first frame update
     public void SetupBattle(GameObject enemy)
     {
@@ -24,12 +28,19 @@ public class BattleStats : MonoBehaviour
         {
             case "spider":
                 enemyHealth = 40;
+                enemyIdentification = 0;
                 break;
 
+            case "wolf":
+                enemyHealth = 50;
+                enemyIdentification = 1;
+                break;
             default:
                 Debug.Log("NOPE!");
                 break;
         }
+        enemyVisual.GetComponent<SpriteRenderer>().sprite = visualList[enemyIdentification];
+        enemyNameText.text = enemyName;
     }
     public void UpdateHealth()
     {

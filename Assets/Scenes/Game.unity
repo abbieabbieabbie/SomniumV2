@@ -12909,6 +12909,7 @@ MonoBehaviour:
   - 200
   costText: {fileID: 1292518539}
   shopBox: {fileID: 622129762}
+  playerTransform: {fileID: 830595022}
 --- !u!65 &1358447034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15287,7 +15288,8 @@ MonoBehaviour:
   - {fileID: 1527227760}
   - {fileID: 2089479983}
   attackScript: {fileID: 1736723281}
-  player: {fileID: 0}
+  player: {fileID: 830595024}
+  battleStats: {fileID: 1736723282}
 --- !u!114 &1736723281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15305,6 +15307,12 @@ MonoBehaviour:
   - The spider hisses at you!
   - The spider bites you!
   - The spider jumps at your face!
+  - The wolf growls at you!
+  - The wolf leaps at you!
+  - The wolf bites!
+  - The wolf snarls at you!
+  - The wolf howls...
+  - The wolf sniffs you...
   disableDialogTextlist:
   - {fileID: 972453806}
   enableDialogTextlist:
@@ -15336,11 +15344,18 @@ MonoBehaviour:
   enemyName: 
   enemyHealth: 0
   player: {fileID: 830595024}
-  playerPos: {fileID: 0}
+  playerPos: {fileID: 830595023}
   healthText: {fileID: 1919355211}
+  enemyNameText: {fileID: 972453807}
   enemyObject: {fileID: 0}
   enemyPrefabs: {fileID: 888835595}
+  enemyVisual: {fileID: 126629010}
+  visualList:
+  - {fileID: 21300000, guid: cef684137ae4a254a992f08e3b13c6e8, type: 3}
+  - {fileID: 21300000, guid: f4d2faccc482ec74bbae71687e90feed, type: 3}
+  - {fileID: 21300000, guid: ef59b27550b0945428b55a03acae35b9, type: 3}
   specialWeapon: 0
+  enemyIdentification: 0
 --- !u!1 &1745167453 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8632272961800676546, guid: 6ed0d3a48b48a7545900e25d1210abf3, type: 3}
@@ -17094,12 +17109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.75
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -17369,12 +17384,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.75
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
