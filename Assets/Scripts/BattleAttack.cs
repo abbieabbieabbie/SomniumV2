@@ -101,7 +101,7 @@ public class BattleAttack : MonoBehaviour
             }
             if (endDialog == 2)
             {
-                shop.coins += 100;
+                shop.coinStash += 100;
                 StartDialog("You earned 100 coins!", 0, 3);
             }
             if (endDialog == 3)

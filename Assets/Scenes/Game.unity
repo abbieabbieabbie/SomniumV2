@@ -13891,6 +13891,7 @@ MonoBehaviour:
   - {fileID: 1335694665}
   shop: {fileID: 216828337}
   coins: 0
+  coinStash: 0
   prices:
   - 0
   - 1
@@ -16884,6 +16885,7 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   enemyPrefabs: {fileID: 888835595}
   enemyVisual: {fileID: 126629010}
+  shop: {fileID: 1358447033}
   visualList:
   - {fileID: 21300000, guid: cef684137ae4a254a992f08e3b13c6e8, type: 3}
   - {fileID: 21300000, guid: f4d2faccc482ec74bbae71687e90feed, type: 3}
@@ -18183,6 +18185,7 @@ MonoBehaviour:
   select: 0
   pauseMenu: {fileID: 975578779}
   player: {fileID: 830595024}
+  shop: {fileID: 1358447033}
 --- !u!65 &1877732240
 BoxCollider:
   m_ObjectHideFlags: 0

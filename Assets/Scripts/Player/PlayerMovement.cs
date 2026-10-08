@@ -25,6 +25,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(x, 0, z);
         transform.Translate(movement * speed * Time.deltaTime);
 
-        coinCounter.text = "Coins: " + $"{coins.coins}";
+        coinCounter.text = "Coins: " + $"{coins.coinStash}";
     }
 }

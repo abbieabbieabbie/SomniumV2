@@ -14,6 +14,7 @@ public class BattleStats : MonoBehaviour
     public GameObject enemyObject;
     public EnemyGeneration enemyPrefabs;
     public GameObject enemyVisual;
+    public MenuSelect shop;
     public List<Sprite> visualList;
     public int specialWeapon = 0;
     public int enemyIdentification;
@@ -59,6 +60,7 @@ public class BattleStats : MonoBehaviour
         if (player.playerHealth <= 0)
         {
             Destroy(enemyObject);
+            shop.coinStash = 0;
             player.battleSystem.SetActive(false);
             player.filter.SetActive(true);
             player.gameOverScreen.SetActive(true);

@@ -11,6 +11,7 @@ public class MenuSelect : MonoBehaviour
     public GameObject shop;
     private int menu = 0;
     public float coins;
+    public float coinStash;
     public List<float> prices;
     public TMPro.TextMeshProUGUI costText;
     public TMPro.TextMeshProUGUI coinText;
@@ -118,6 +119,7 @@ public class MenuSelect : MonoBehaviour
                     if (menu == 0)
                     {
                         player.overworld.SetActive(true);
+                        coinStash = 0;
                         player.playerHealth = player.maxPlayerHealth;
                         transform.parent.gameObject.SetActive(false);
                         playerTransform.position = new Vector3(0,0.6f,-5);

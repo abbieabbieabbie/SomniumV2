@@ -8,6 +8,7 @@ public class PauseSelect : MonoBehaviour
     private int select = 0;
     public GameObject pauseMenu;
     public PlayerCollider player;
+    public MenuSelect shop;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,7 @@ public class PauseSelect : MonoBehaviour
                 if (select == -1)
                 {
                     player.gameOverScreen.SetActive(true);
+                    shop.coins += shop.coinStash;
                     pauseMenu.SetActive(false);
                 }
             }
