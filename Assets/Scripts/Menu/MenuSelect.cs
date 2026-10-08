@@ -14,7 +14,6 @@ public class MenuSelect : MonoBehaviour
     public List<float> prices;
     public TMPro.TextMeshProUGUI costText;
     public TMPro.TextMeshProUGUI coinText;
-    public GameObject shopBox;
     public Transform playerTransform;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +25,10 @@ public class MenuSelect : MonoBehaviour
     void Update()
     {
         coinText.text = "Coins: " + $"{coins}";
+        if (menu == 1)
+        {
+            UpdatePrice();
+        }
         prices[0] = 49 + (float) Math.Pow(prices[1], 4);
         prices[2] = 49 + (float) Math.Pow(prices[3], 4);
         if (Input.GetKeyDown(KeyCode.S))
@@ -54,7 +57,7 @@ public class MenuSelect : MonoBehaviour
             {
                 selected = -4;
             }
-            transform.position = new Vector3(-3.0f,(2.0f + selected), -5f) + transform.parent.position;
+            transform.position = new Vector3(-2.5f,(2.0f + selected), -5f) + transform.parent.position;
         } else if (menu == 1)
         {
             if (selected < -9)
@@ -67,41 +70,45 @@ public class MenuSelect : MonoBehaviour
                 selected = -9;
                 UpdatePrice();
             }
+        }
+        
+        if (menu == 1)
+        {
             switch(selected)
             {
                 case 0:
-                    transform.position = new Vector3(-1.8f,2.3f,-5f) + transform.parent.position;
+                    transform.position = new Vector3(-1.6f,2.3f,-5f) + transform.parent.position;
                     break;
-                case 1:
-                    transform.position = new Vector3(-1.8f,1.8f,-5f) + transform.parent.position;
+                case -1:
+                    transform.position = new Vector3(-1.9f,1.8f,-5f) + transform.parent.position;
                     break;
-                case 2:
-                    transform.position = new Vector3(-1.8f,1.3f,-5f) + transform.parent.position;
+                case -2:
+                    transform.position = new Vector3(-1.8f,1.25f,-5f) + transform.parent.position;
                     break;
-                case 3:
-                    transform.position = new Vector3(-1.8f,0.8f,-5f) + transform.parent.position;
+                case -3:
+                    transform.position = new Vector3(-1.3f,0.75f,-5f) + transform.parent.position;
                     break;
-                case 4:
-                    transform.position = new Vector3(-1.8f,0.3f,-5f) + transform.parent.position;
+                case -4:
+                    transform.position = new Vector3(-1.3f,0.2f,-5f) + transform.parent.position;
                     break;
-                case 5:
-                    transform.position = new Vector3(-1.8f,-0.2f,-5f) + transform.parent.position;
+                case -5:
+                    transform.position = new Vector3(-1.8f,-0.4f,-5f) + transform.parent.position;
                     break;
-                case 6:
-                    transform.position = new Vector3(-1.8f,-0.7f,-5f) + transform.parent.position;
+                case -6:
+                    transform.position = new Vector3(-2.1f,-0.9f,-5f) + transform.parent.position;
                     break;
-                case 7:
-                    transform.position = new Vector3(-1.8f,-1.2f,-5f) + transform.parent.position;
+                case -7:
+                    transform.position = new Vector3(-1.8f,-1.5f,-5f) + transform.parent.position;
                     break;
-                case 8:
-                    transform.position = new Vector3(-1.8f,-1.7f,-5f) + transform.parent.position;
+                case -8:
+                    transform.position = new Vector3(-1.6f,-2.0f,-5f) + transform.parent.position;
                     break;
-                case 9:
-                    transform.position = new Vector3(-1.8f,-2.1f,-5f) + transform.parent.position;
+                case -9:
+                    transform.position = new Vector3(-2.6f,-2.5f,-5f) + transform.parent.position;
                     break;
             }
         }
-        
+            
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -123,7 +130,6 @@ public class MenuSelect : MonoBehaviour
                             {
                                 menuList[i].SetActive(false);
                             }
-                        shopBox.SetActive(true);
                         shop.SetActive(true);
                         selected = 0;
                         menu = 1;
@@ -148,6 +154,7 @@ public class MenuSelect : MonoBehaviour
                     {
                         if (coins >= prices[0])
                         {
+                            coins -= prices[0];
                             player.maxPlayerHealth += 25;
                             prices[1] += 1;
                         }
@@ -158,6 +165,7 @@ public class MenuSelect : MonoBehaviour
                     {
                         if (coins >= prices[2])
                         {
+                            coins -= prices[2];
                             player.damage += 3;
                             prices[3] += 1;
                         }
@@ -171,7 +179,6 @@ public class MenuSelect : MonoBehaviour
                                 menuList[i].SetActive(true);
                             }
                         shop.SetActive(false);
-                        shopBox.SetActive(false);
                         selected = -1;
                         menu = 0;
                     }
@@ -179,7 +186,6 @@ public class MenuSelect : MonoBehaviour
                 default:
                     break;
             }
-            UpdatePrice();
         }
     }
     public void UpdatePrice()
@@ -197,6 +203,9 @@ public class MenuSelect : MonoBehaviour
                 break;
             case -7:
                 costText.text = "Cost: " + $"{Math.Floor(prices[0])}";
+                break;
+            case -8:
+                costText.text = "Cost: " + $"{Math.Floor(prices[2])}";
                 break;
             case -9:
                 costText.text = " ";
