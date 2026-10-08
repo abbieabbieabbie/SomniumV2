@@ -12,6 +12,7 @@ public class BattleStats : MonoBehaviour
     public TMPro.TextMeshProUGUI healthText;
     public GameObject enemyObject;
     public EnemyGeneration enemyPrefabs;
+    public int specialWeapon = 0;
     // Start is called before the first frame update
     public void SetupBattle(GameObject enemy)
     {

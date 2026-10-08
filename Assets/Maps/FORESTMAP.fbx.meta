@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BushUV
-    second: {fileID: -2780033955926612249, guid: bb0cc53b38da5c74ba402c202c82daf7, type: 3}
+    second: {fileID: 2100000, guid: 70b008a2901482b4a835c54ec76fb00e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rock_UV
-    second: {fileID: 494611841539495768, guid: bb0cc53b38da5c74ba402c202c82daf7, type: 3}
+    second: {fileID: 2100000, guid: 9733938d413c0074d8cdc4eba2e0c99f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -33,7 +33,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Water
-    second: {fileID: -8559731736929697333, guid: bb0cc53b38da5c74ba402c202c82daf7, type: 3}
+    second: {fileID: 2100000, guid: d50b6b6557409f34f85ad6b8ceb84d1e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

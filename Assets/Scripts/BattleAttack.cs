@@ -49,7 +49,7 @@ public class BattleAttack : MonoBehaviour
             Destroy(this);
         }
     }
-    public void Attack(int enemyID, int damageDealt)
+    public void Attack(int enemyID, float damageDealt)
     {
         skipLine = false;
         StartDialog(dialogTextlist[0] + "Spider for " + damageDealt.ToString() + " damage!", 0, -(enemyID));

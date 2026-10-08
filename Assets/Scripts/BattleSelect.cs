@@ -11,7 +11,9 @@ public class BattleSelect : MonoBehaviour
     public int VerSelect = 0;
     public List<GameObject> disableList;
     public List<GameObject> battleList;
+    public List<GameObject> specialList;
     public BattleAttack attackScript;
+    public PlayerCollider player;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +101,7 @@ public class BattleSelect : MonoBehaviour
         {
             if (previousMenu == 1)
             {
-                attackScript.Attack(1, 5);
+                attackScript.Attack(1, player.damage);
             } else
             {
                 for (int i = 0; i < disableList.Count; i++)
@@ -112,6 +114,25 @@ public class BattleSelect : MonoBehaviour
                 }
             }
             
+        }
+
+        if (battleMenu == 3)
+        {
+            Debug.Log("aaa");
+            if (previousMenu == 3)
+            {
+
+            } else
+            {
+                for (int i = 0; i < disableList.Count; i++)
+                {
+                    disableList[i].SetActive(false);
+                }
+                for (int i = 0; i < specialList.Count; i++)
+                {
+                    specialList[i].SetActive(true);
+                }
+            }
         }
     }
 
@@ -158,9 +179,13 @@ public class BattleSelect : MonoBehaviour
             {
                 disableList[i].SetActive(true);
             }
-            for (int i = 0; i < battleList.Count; i++)
+        for (int i = 0; i < battleList.Count; i++)
             {
                 battleList[i].SetActive(false);
+            }
+        for (int i = 0; i < specialList.Count; i++)
+            {
+                specialList[i].SetActive(false);
             }
     }
 }

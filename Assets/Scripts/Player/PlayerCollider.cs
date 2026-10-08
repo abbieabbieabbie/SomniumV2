@@ -9,6 +9,8 @@ public class PlayerCollider : MonoBehaviour
     public GameObject gameOverScreen;
     public BattleStats battleSetup;
     public float playerHealth = 50;
+    public float maxPlayerHealth = 50;
+    public float damage = 5;
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Enemy"))
