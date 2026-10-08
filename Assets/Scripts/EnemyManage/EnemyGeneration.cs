@@ -68,6 +68,7 @@ public class EnemyGeneration : MonoBehaviour
     }
     public void GameOver()
     {
+        enemyCounter -= 1;
         Destroy(gameObject);
     }
 }

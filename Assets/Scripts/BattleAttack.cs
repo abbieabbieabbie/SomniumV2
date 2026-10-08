@@ -15,6 +15,7 @@ public class BattleAttack : MonoBehaviour
     public GameObject battleBox;
     public GameObject dialogText;
     public List<GameObject> attackObjects;
+    public MenuSelect shop;
     private float scaleX = 7;
     private float scaleY = 3;
     public bool inDialog;
@@ -99,6 +100,11 @@ public class BattleAttack : MonoBehaviour
                 }
             }
             if (endDialog == 2)
+            {
+                shop.coins += 100;
+                StartDialog("You earned 100 coins!", 0, 3);
+            }
+            if (endDialog == 3)
                 {
                     battle.EscapeToSelect(1);
                     battleStats.WinCondition();

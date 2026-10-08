@@ -10,20 +10,22 @@ public class MenuSelect : MonoBehaviour
     public List<GameObject> menuList;
     public GameObject shop;
     private int menu = 0;
-    private float coins = 0f;
+    public float coins;
     public List<float> prices;
     public TMPro.TextMeshProUGUI costText;
+    public TMPro.TextMeshProUGUI coinText;
     public GameObject shopBox;
     public Transform playerTransform;
     // Start is called before the first frame update
     void Start()
     {
-        
+        coins = 2000f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        coinText.text = "Coins: " + $"{coins}";
         prices[0] = 49 + (float) Math.Pow(prices[1], 4);
         prices[2] = 49 + (float) Math.Pow(prices[3], 4);
         if (Input.GetKeyDown(KeyCode.S))
@@ -63,8 +65,41 @@ public class MenuSelect : MonoBehaviour
             if (selected > 0)
             {
                 selected = -9;
+                UpdatePrice();
             }
-            transform.position = new Vector3(-2.0f,(2.5f + (selected / 1.95f)), -5f) + transform.parent.position;
+            switch(selected)
+            {
+                case 0:
+                    transform.position = new Vector3(-1.8f,2.3f,-5f) + transform.parent.position;
+                    break;
+                case 1:
+                    transform.position = new Vector3(-1.8f,1.8f,-5f) + transform.parent.position;
+                    break;
+                case 2:
+                    transform.position = new Vector3(-1.8f,1.3f,-5f) + transform.parent.position;
+                    break;
+                case 3:
+                    transform.position = new Vector3(-1.8f,0.8f,-5f) + transform.parent.position;
+                    break;
+                case 4:
+                    transform.position = new Vector3(-1.8f,0.3f,-5f) + transform.parent.position;
+                    break;
+                case 5:
+                    transform.position = new Vector3(-1.8f,-0.2f,-5f) + transform.parent.position;
+                    break;
+                case 6:
+                    transform.position = new Vector3(-1.8f,-0.7f,-5f) + transform.parent.position;
+                    break;
+                case 7:
+                    transform.position = new Vector3(-1.8f,-1.2f,-5f) + transform.parent.position;
+                    break;
+                case 8:
+                    transform.position = new Vector3(-1.8f,-1.7f,-5f) + transform.parent.position;
+                    break;
+                case 9:
+                    transform.position = new Vector3(-1.8f,-2.1f,-5f) + transform.parent.position;
+                    break;
+            }
         }
         
 
@@ -144,6 +179,7 @@ public class MenuSelect : MonoBehaviour
                 default:
                     break;
             }
+            UpdatePrice();
         }
     }
     public void UpdatePrice()
