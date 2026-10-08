@@ -9,9 +9,21 @@ public class PlayerCollider : MonoBehaviour
     public GameObject gameOverScreen;
     public BattleStats battleSetup;
     public GameObject filter;
+    public GameObject pauseMenu;
     public float playerHealth = 50;
     public float maxPlayerHealth = 50;
     public float damage = 5;
+    void Update()
+    {
+        if (gameObject.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenu.SetActive(true);
+                overworld.SetActive(false);
+            }
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Enemy"))

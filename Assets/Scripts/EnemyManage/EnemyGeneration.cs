@@ -11,7 +11,6 @@ public class EnemyGeneration : MonoBehaviour
     [SerializeField]
     private float respawnTime;
     private int enemyCounter;
-    int attempt = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,15 +46,7 @@ public class EnemyGeneration : MonoBehaviour
         int id = type;
         if (Vector3.Distance(transform.position, player.transform.position) < 7f)
         {
-            if (attempt <= 100)
-            {
-                InstantiateEnemy(0, new Vector3(Random.Range(-19f,19f),0,Random.Range(-19f,19f)));
-                attempt += 1;
-            } else
-            {
-                respawnTime = 2f;
-                attempt = 1;
-            }
+            respawnTime = 2f;
         } else
         {
             GameObject clone = Instantiate(enemy, parent);
